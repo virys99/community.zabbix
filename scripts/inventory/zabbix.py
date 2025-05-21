@@ -183,9 +183,9 @@ class ZabbixInventory(object):
                     if len(host_data["interfaces"]) >= 1:
                         # use first interface only
                         if host_data["interfaces"][0]["useip"] == '0':
-                            data["ansible_ssh_host"] = host_data["interfaces"][0]["dns"]
+                            data["ansible_host"] = host_data["interfaces"][0]["dns"]
                         else:
-                            data["ansible_ssh_host"] = host_data["interfaces"][0]["ip"]
+                            data["ansible_host"] = host_data["interfaces"][0]["ip"]
                 if ("inventory" in host_data) and (host_data["inventory"]):
                     data.update(host_data["inventory"])
         return data
@@ -219,9 +219,9 @@ class ZabbixInventory(object):
                 if len(host["interfaces"]) >= 1:
                     # use first interface only
                     if host["interfaces"][0]["useip"] == 0:
-                        hostvars["ansible_ssh_host"] = host["interfaces"][0]["dns"]
+                        hostvars["ansible_host"] = host["interfaces"][0]["dns"]
                     else:
-                        hostvars["ansible_ssh_host"] = host["interfaces"][0]["ip"]
+                        hostvars["ansible_host"] = host["interfaces"][0]["ip"]
             if ("inventory" in host) and (host["inventory"]):
                 hostvars.update(host["inventory"])
             data["_meta"]["hostvars"][hostname] = hostvars
