@@ -1,7 +1,7 @@
 - name: Using Zabbix collection to install Zabbix Agent
   hosts: windows_servers
   roles:
-    - role: ../community.zabbix/roles/zabbix_agent
+    - role: roles/zabbix_agent
       zabbix_agent_version: 7.0
       zabbix_agent_version_long: 7.0.11
       zabbix_agent2: true
